@@ -161,7 +161,7 @@ function _spawnScout(spawn: StructureSpawn, scoutFlag: Flag, ticks: number, maxC
     if(!Memory.rooms[scoutFlag.pos.roomName] || (Memory.rooms[scoutFlag.pos.roomName] && Game.time > Memory.rooms[scoutFlag.pos.roomName].lastSeenTick + ticks)) {
         if(!spawn.spawning) {
             console.log('spawning '+ role)
-            spawn.spawnCreep(realBody, role + Memory.creepId++, { memory: {role: role, scoutFlag: scoutFlag.name}})
+            spawn.spawnCreep(realBody, role + Game.time, { memory: {role: role, scoutFlag: scoutFlag.name}})
         }
     }
 }
@@ -169,6 +169,6 @@ function _spawnScout(spawn: StructureSpawn, scoutFlag: Flag, ticks: number, maxC
 function _spawnFighter(spawn:StructureSpawn, rallyFlag:Flag, attackFlag:Flag, role:string, body:BodyPartConstant[], isFighter:boolean) {
     if(!spawn.spawning) {
         console.log('spawning '+ role)
-        spawn.spawnCreep(body, role + Memory.creepId++, { memory: {role: role, rallyFlagName: rallyFlag.name, attackFlagName: attackFlag.name, isFighter: true}})
+        spawn.spawnCreep(body, role + Game.time, { memory: {role: role, rallyFlagName: rallyFlag.name, attackFlagName: attackFlag.name, isFighter: true}})
     }
 }

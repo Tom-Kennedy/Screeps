@@ -1,7 +1,7 @@
 import roleWorker from 'roles/workerRole'
 import roleMiner from 'roles/minerRole'
 import roleUpgrader from 'roles/upgraderRole'
-import spawner from 'old/spawner'
+import spawnManager from 'managers/spawnManager'
 import towerManager from './towerManager'
 
 const baseManager = {
@@ -11,29 +11,30 @@ const baseManager = {
 export default baseManager
 
 function _manage(room: Room) {
-    let roleInfo = getRoleInfo(room)
+    let roleInfo = getRoles(room)
     spawn(room, roleInfo)
     towerManager.run(room)
-    room.memory.roleInfo = roleInfo
+    room.memory.roles = roleInfo
 }
 
-function spawn(room:Room, roleInfo:any) {
-    spawner.run(room)
+function spawn(room:Room, roleInfo:RolesMemory) {
+    spawnManager.run(room)
 
     for(const roleId in roleInfo) {
-        const requiredCount = roleInfo[roleId].requested
+        const role = roleInfo[roleId]
+        const requiredCount = role.requested
         if(!requiredCount)
             break
 
         const currentAmount = room.find(FIND_MY_CREEPS, { filter: (creep) => creep.memory.role == roleId }).length
-        if(currentAmount < requiredCount && !spawner.spawning()) {
-            spawner.spawnWorker(roleId)
+        if(currentAmount < requiredCount && !spawnManager.spawning()) {
+            spawnManager.spawnWorker(roleId)
         }
     }
 }
 
-function getRoleInfo(room: Room) {
-    return room.memory.roleInfo || (room.memory.roleInfo = {
+function getRoles(room: Room) {
+    return room.memory.roles || (room.memory.roles = {
             [roleUpgrader.id]: {
                 requested: 1
             },

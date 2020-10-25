@@ -57,7 +57,7 @@ function _spawnWorker(spawn: StructureSpawn, retrieveFlag: Flag, depositFlag:Fla
     if(currentCount < needed && retrieveFlag && depositFlag && !spawn.spawning) {
         spawn.spawnCreep(
             body,
-            role + retrieveFlag.name + 'n' + Memory.creepId++,
+            role + retrieveFlag.name + 'N' + Game.time,
             { memory: {role: role, goToRetrieveFlagName: retrieveFlag.name, goToDepositFlagName: depositFlag.name, spawnId: spawn.id }})
     }
 }

@@ -28,11 +28,18 @@ interface RoomMemory {
     sources: any
     spawnInfo: any
     storageInfo: any
-    roleInfo?: any
+    roles?: RolesMemory
+}
+
+interface RolesMemory {
+    [propName: string]: RoleMemory
+}
+
+interface RoleMemory {
+    requested: number
 }
 
 interface Memory {
-    creepId: number
     creepInfo: any
     remoteMinerLog:any
 }
