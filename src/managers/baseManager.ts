@@ -1,8 +1,8 @@
-import roleWorker from 'roles/workerRole'
-import roleMiner from 'roles/minerRole'
-import roleUpgrader from 'roles/upgraderRole'
 import spawnManager from 'managers/spawnManager'
 import towerManager from './towerManager'
+import workerRole from "roles/workerRole"
+import upgraderRole from "roles/upgraderRole"
+import haulerRole from 'roles/haulerRole'
 
 const baseManager = {
     manage: _manage,
@@ -11,38 +11,26 @@ const baseManager = {
 export default baseManager
 
 function _manage(room: Room) {
-    let roleInfo = getRoles(room)
-    spawn(room, roleInfo)
+    spawn(room)
     towerManager.run(room)
-    room.memory.roles = roleInfo
 }
 
-function spawn(room:Room, roleInfo:RolesMemory) {
-    spawnManager.run(room)
+function spawn(room:Room) {
+    if(_findCreepsOfRole(room, haulerRole.id).length < 1) {
+        spawnManager.spawnWorker(room, haulerRole.id)
+    }
 
-    for(const roleId in roleInfo) {
-        const role = roleInfo[roleId]
-        const requiredCount = role.requested
-        if(!requiredCount)
-            break
+    if(_findCreepsOfRole(room, workerRole.id).length < room.find(FIND_SOURCES).length) {
+        spawnManager.spawnWorker(room, workerRole.id)
+    }
 
-        const currentAmount = room.find(FIND_MY_CREEPS, { filter: (creep) => creep.memory.role == roleId }).length
-        if(currentAmount < requiredCount && !spawnManager.spawning()) {
-            spawnManager.spawnWorker(roleId)
-        }
+    if(_findCreepsOfRole(room, upgraderRole.id).length < 1) {
+        spawnManager.spawnWorker(room, upgraderRole.id)
     }
 }
 
-function getRoles(room: Room) {
-    return room.memory.roles || (room.memory.roles = {
-            [roleUpgrader.id]: {
-                requested: 1
-            },
-            [roleMiner.id]: {
-                requested: 2
-            },
-            [roleWorker.id]: {
-                requested: 1
-            },
-    })
+function _findCreepsOfRole(room: Room, roleId: string) {
+    return room.find(FIND_MY_CREEPS, {
+        filter: { memory: { role: roleId } }
+    });
 }

@@ -6,6 +6,7 @@ import buildTask from '../tasks/tasks/buildTask'
 import upgradeTask from '../tasks/tasks/upgradeTask'
 import repairTask from '../tasks/tasks/repairTask'
 import maintainDefensesTask from '../tasks/tasks/maintainDefensesTask'
+import bodyBuilder from "../old/builder.body"
 
 const taskList = [
     supplyTask,
@@ -26,7 +27,6 @@ let workerRole = {
 }
 
 function _generateBody(capacity: number) {
-    let i;
     capacity = Math.floor(capacity/50) * 50
     console.log(capacity)
 
@@ -34,20 +34,12 @@ function _generateBody(capacity: number) {
     const workBodies = Math.floor(totalWorkerParts / 4);
     const moveBodies = workBodies;
     const carryBodies = totalWorkerParts - Math.floor(workBodies * 2) - moveBodies;
-    const body = [];
-    for(i = 0; i < Math.min(workBodies, 6); i++) {
-        body.push(WORK)
-    }
 
-    for(i = 0; i < Math.min(moveBodies, 6); i++) {
-        body.push(MOVE)
-    }
-
-    for(i = 0; i < Math.min(carryBodies, 6); i++) {
-        body.push(CARRY)
-    }
-
-    return body
+    return bodyBuilder.init()
+        .add(Math.min(workBodies, 6), WORK)
+        .add(Math.min(carryBodies, 6), CARRY)
+        .add(Math.min(moveBodies, 6), MOVE)
+        .build().parts
 }
 
 export default workerRole

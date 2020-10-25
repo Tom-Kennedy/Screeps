@@ -6,6 +6,7 @@ interface CreepMemory {
     scoutFlag?: string
     goToRetrieveFlagName?: string
     goToDepositFlagName?: string
+    originRoom?: string
     spawnId?: string
     role: string
     rallyFlagName?: string
@@ -28,15 +29,6 @@ interface RoomMemory {
     sources: any
     spawnInfo: any
     storageInfo: any
-    roles?: RolesMemory
-}
-
-interface RolesMemory {
-    [propName: string]: RoleMemory
-}
-
-interface RoleMemory {
-    requested: number
 }
 
 interface Memory {
