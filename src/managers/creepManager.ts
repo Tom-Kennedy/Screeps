@@ -11,7 +11,7 @@ import roleScout from 'roles/scoutRole'
 import roleHauler from 'roles/haulerRole'
 import roleBaseBuster from 'roles/baseBusterRole'
 import creepHelper from 'old/helper.creep'
-import intelManager from './manager.intel'
+import intelManager from './intelManager'
 import _ from "lodash";
 
 const creepManager = {
@@ -60,15 +60,4 @@ function _run() {
         const role = _.head(_roles.filter((r) => r.id == creep.memory.role))
         role && role.run(creep)
     })
-
-    // for(var name in Game.creeps) {
-    //     var creep = Game.creeps[name];
-
-    //     // TODO: move this line of code
-    //     creep.memory.cost = creepHelper.getCost(creep)
-    //     creepHelper.maintainArea(creep)
-    //     var role = _.head(_roles.filter((r) => r.id == creep.memory.role))
-    //     role && role.run(creep)
-
-    // }
 }

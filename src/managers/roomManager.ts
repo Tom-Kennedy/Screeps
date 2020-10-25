@@ -1,5 +1,5 @@
-import baseManager from './manager.base'
-import intelManager from './manager.intel'
+import baseManager from './baseManager'
+import intelManager from './intelManager'
 
 let roomManager = {
     run: _run

@@ -1,7 +1,7 @@
-import roomManager from 'managers/manager.room'
-import creepManager from 'managers/manager.creep'
-import attackManager from 'managers/manager.attack'
-import remoteMiningManager from 'managers/manager.remoteMining'
+import roomManager from 'managers/roomManager'
+import creepManager from 'managers/creepManager'
+import attackManager from 'managers/attackManager'
+import remoteMiningManager from 'managers/remoteMiningManager'
 
 const main = function () {
     creepManager.run()
