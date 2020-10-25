@@ -3,14 +3,14 @@ import taskRetrieve from '../tasks/task.retrieve'
 import taskUpgrade from '../tasks/task.upgrade'
 import tasksRunner from '../tasks/tasks.runner'
 
-let roleUpgrader = {
+let upgraderRole = {
     id: 'upgrader',
     run: function(creep: Creep) {
         return tasksRunner.run(creep, taskPriority)
     }
 }
 
-export default roleUpgrader
+export default upgraderRole
 
 const taskPriority = [
     taskRetrieve,

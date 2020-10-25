@@ -2,7 +2,7 @@ import tasksRunner from '../tasks/tasks.runner'
 import taskHeal from '../tasks/task.heal'
 import taskAssaultRoom from '../tasks/task.assaultRoom'
 
-let roleHealer = {
+let healerRole = {
     id: 'healer',
     run: function(creep: Creep) {
         const taskPriority = [
@@ -13,4 +13,4 @@ let roleHealer = {
     }
 }
 
-export default roleHealer
+export default healerRole

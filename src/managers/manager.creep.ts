@@ -1,16 +1,16 @@
-import roleUpgrader from './role.upgrader'
-import roleWorker from './role.worker'
-import roleMiner from './role.miner'
-import roleClaimer from './role.claimer'
-import roleAttacker from './role.attacker'
-import roleRangedAttacker from './role.rangedAttacker'
-import roleHealer from './role.healer'
-import roleRemoteMiner from './role.remoteMiner'
-import roleLongHauler from './role.longHauler'
-import roleScout from './role.scout'
-import roleHauler from './role.hauler'
-import roleBaseBuster from './role.baseBuster'
-import creepHelper from './helper.creep'
+import roleUpgrader from 'roles/upgraderRole'
+import workerRole from 'roles/workerRole'
+import minerRole from 'roles/minerRole'
+import claimerRole from 'roles/claimerRole'
+import roleAttacker from 'roles/attackerRole'
+import roleRangedAttacker from 'roles/rangedAttackerRole'
+import roleHealer from 'roles/healerRole'
+import roleRemoteMiner from 'roles/remoteMinerRole'
+import roleLongHauler from 'roles/longHaulerRole'
+import roleScout from 'roles/scoutRole'
+import roleHauler from 'roles/haulerRole'
+import roleBaseBuster from 'roles/baseBusterRole'
+import creepHelper from 'old/helper.creep'
 import intelManager from './manager.intel'
 import _ from "lodash";
 
@@ -21,11 +21,11 @@ const creepManager = {
 export default creepManager
 
 const _roles = [
-    roleWorker,
+    workerRole,
     roleHauler,
     roleUpgrader,
-    roleMiner,
-    roleClaimer,
+    minerRole,
+    claimerRole,
     roleAttacker,
     roleRangedAttacker,
     roleHealer,

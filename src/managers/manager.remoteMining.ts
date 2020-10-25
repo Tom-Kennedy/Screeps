@@ -1,4 +1,4 @@
-import bodyBuilder from './builder.body'
+import bodyBuilder from 'old/builder.body'
 
 let remoteMiningManager = {
     run: function() {
@@ -15,7 +15,6 @@ let remoteMiningManager = {
             'remoteMiner',
             2,
             minerHaulerBody)
-
 
         _spawnWorker(
             Game.spawns.Spawn2,

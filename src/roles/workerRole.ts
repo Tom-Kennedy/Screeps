@@ -17,11 +17,11 @@ const taskList = [
     taskMine
 ]
 
-let roleWorker = {
+let workerRole = {
     id: 'worker',
     run: function (creep: Creep) {
         return tasksRunner.run(creep, taskList)
     }
 }
 
-export default roleWorker
+export default workerRole

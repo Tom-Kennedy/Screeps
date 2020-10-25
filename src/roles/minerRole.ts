@@ -13,11 +13,11 @@ const taskPriority = [
     taskUpgrade
 ];
 
-let roleMiner = {
+let minerRole = {
     id: 'miner',
     run: function(creep: Creep) {
         return tasksRunner.run(creep, taskPriority)
     }
 }
 
-export default roleMiner
+export default minerRole

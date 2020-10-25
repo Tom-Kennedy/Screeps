@@ -1,4 +1,4 @@
-import creepHelper from './helper.creep'
+import creepHelper from 'old/helper.creep'
 import _ from "lodash";
 
 let intelManager = {

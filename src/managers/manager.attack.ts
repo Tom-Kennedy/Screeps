@@ -1,4 +1,4 @@
-import bodyBuilder from './builder.body'
+import bodyBuilder from 'old/builder.body'
 import _ from "lodash";
 
 let attackManager = {

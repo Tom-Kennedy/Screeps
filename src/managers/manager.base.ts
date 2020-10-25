@@ -1,7 +1,7 @@
-import roleWorker from './role.worker'
-import roleMiner from './role.miner'
-import roleUpgrader from './role.upgrader'
-import spawner from './spawner'
+import roleWorker from 'roles/workerRole'
+import roleMiner from 'roles/minerRole'
+import roleUpgrader from 'roles/upgraderRole'
+import spawner from 'old/spawner'
 import towerManager from './manager.tower'
 
 const baseManager = {

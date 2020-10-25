@@ -3,7 +3,7 @@ import taskMine from '../tasks/task.mine'
 import taskStore from '../tasks/task.store'
 import tasksRunner from '../tasks/tasks.runner'
 
-let taskRemoteMiner = {
+let remoteMinerRole = {
     id: 'remoteMiner',
     run: function(creep: Creep) {
         const retrieveFlag = creep.memory.goToRetrieveFlagName ? Game.flags[creep.memory.goToRetrieveFlagName] : undefined
@@ -29,4 +29,4 @@ function _shouldReturn() {
     return (creep:Creep) => creep.store.getUsedCapacity() > creep.store.getCapacity() * .75
 }
 
-export default taskRemoteMiner
+export default remoteMinerRole

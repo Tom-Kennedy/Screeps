@@ -3,7 +3,7 @@ import tasksRunner from '../tasks/tasks.runner'
 import taskAttack from '../tasks/task.attack'
 import attackHostileStructures from '../tasks/task.attackHostileStructures'
 
-let roleScout = {
+let scoutRole = {
     id: 'scout',
     run: function(creep: Creep) {
         const taskPriority = [
@@ -20,4 +20,4 @@ let roleScout = {
     }
 };
 
-export default roleScout
+export default scoutRole

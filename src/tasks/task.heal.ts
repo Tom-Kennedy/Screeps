@@ -1,4 +1,3 @@
-
 let taskHeal = {
     id: 'heal',
     do: function(creep: Creep) {
