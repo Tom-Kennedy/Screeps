@@ -1,4 +1,4 @@
-import creepHelper from 'old/helper.creep'
+import creepHelper from 'utils/creepHelper'
 import _ from 'lodash'
 
 let mineTask = {

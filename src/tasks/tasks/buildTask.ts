@@ -1,4 +1,4 @@
-import creepHelper from 'old/helper.creep'
+import creepHelper from 'utils/creepHelper'
 
 let  buildTask = {
     id:'build',

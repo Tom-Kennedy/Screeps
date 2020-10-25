@@ -22,7 +22,7 @@ let remoteMinerRole = {
 function _shouldRetrieve(flag?:Flag) {
     // @ts-ignore
     const roomMemory = Memory.rooms[flag.pos.roomName];
-    return (creep: Creep) => creep.store.getUsedCapacity() < creep.store.getCapacity() * .75 && !roomMemory.creepInfo.hostile.fighterInfo.creeps.length
+    return (creep: Creep) => creep.store.getUsedCapacity() < creep.store.getCapacity() * .75 && (!roomMemory || !roomMemory.hostileCreeps.fighters.length)
 }
 
 function _shouldReturn() {

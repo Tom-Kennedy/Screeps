@@ -2,7 +2,7 @@ import mineTask from '../tasks/tasks/mineTask'
 import retrieveTask from '../tasks/tasks/retrieveTask'
 import upgradeTask from '../tasks/tasks/upgradeTask'
 import taskRunner from '../tasks/taskRunner'
-import bodyBuilder from "../old/builder.body"
+import bodyBuilder from "../utils/bodyBuilder"
 
 class UpgraderRole implements Role {
     readonly taskPriority = [

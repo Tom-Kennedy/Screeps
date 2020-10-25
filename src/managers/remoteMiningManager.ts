@@ -1,9 +1,9 @@
-import bodyBuilder from 'old/builder.body'
+import bodyBuilder from 'utils/bodyBuilder'
 
 let remoteMiningManager = {
     run: function() {
         const transitRoomMemory = Memory.rooms['E46S8']
-        if(transitRoomMemory && transitRoomMemory.creepInfo.hostile.fighterInfo.creeps.length) {
+        if(transitRoomMemory && transitRoomMemory.hostileCreeps.fighters.length) {
             return
         }
 
@@ -50,7 +50,8 @@ let remoteMiningManager = {
 export default remoteMiningManager
 
 function _spawnWorker(spawn: StructureSpawn, retrieveFlag: Flag, depositFlag:Flag,  role: string, needed: number, body: BodyPartConstant[]) {
-    if(!retrieveFlag || Memory.rooms[retrieveFlag.pos.roomName].creepInfo.hostile.fighterInfo.creeps.length) {
+    const roomMemory = Memory.rooms[retrieveFlag.pos.roomName]
+    if(!retrieveFlag || (roomMemory && roomMemory.hostileCreeps.fighters.length)) {
         return
     }
     const currentCount = Object.values(Game.creeps).filter((creep) => creep.memory.role == role && creep.memory.goToRetrieveFlagName == retrieveFlag.name).length

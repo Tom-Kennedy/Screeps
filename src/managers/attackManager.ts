@@ -1,4 +1,4 @@
-import bodyBuilder from 'old/builder.body'
+import bodyBuilder from 'utils/bodyBuilder'
 import _ from "lodash";
 
 let attackManager = {
@@ -24,9 +24,9 @@ function _harass() {
         return
 
     let isEnemyBase = roomMemory.controllerInfo.username && !roomMemory.controllerInfo.my
-    let shouldHarass = roomMemory.creepInfo.hostile.workerInfo.creeps.length > 0 &&
-            roomMemory.creepInfo.hostile.fighterInfo.attackParts == 0 &&
-            roomMemory.creepInfo.hostile.fighterInfo.attackParts == 0 &&
+    let shouldHarass = roomMemory.hostileCreeps.fighters.length > 0 &&
+            roomMemory.hostileCreeps.attackParts == 0 &&
+            roomMemory.hostileCreeps.attackParts == 0 &&
             !isEnemyBase
     if(shouldHarass) {
         _spawnScout(Game.spawns.Spawn2, Game.flags.Scout, 0, 3)
@@ -55,19 +55,19 @@ function _assault() {
 }
 
 function _attack() {
-    let roomToAttack:any
+    let roomToAttack: RoomMemory | undefined
     let attackFlag = Game.flags.Attack
     if(attackFlag) {
         roomToAttack = Memory.rooms[attackFlag.pos.roomName]
     }
 
-    roomToAttack = _shouldAttackRoom(roomToAttack) ? roomToAttack : _(Memory.rooms).filter(_shouldAttackRoom).head()
+    roomToAttack = _shouldAttackRoom(roomToAttack) ? roomToAttack : _(Memory.rooms).filter(_shouldAttackRoom).head() as RoomMemory
     if(!roomToAttack) {
         return
     }
 
     if(!attackFlag) {
-        let posIntel = roomToAttack.creepInfo.hostile.fighterInfo.creeps [0].pos
+        let posIntel = roomToAttack.hostileCreeps.fighters[0].pos
         let pos = new RoomPosition(posIntel.x, posIntel.y, posIntel.roomName)
         if(Game.rooms[pos.roomName]) {
             pos.createFlag('Attack')
@@ -87,11 +87,11 @@ function _attack() {
     let attackRoom = attackFlag.room
     let fightersInCombat = attackRoom ? attackRoom.find(FIND_MY_CREEPS, {filter : (creep) => creep.memory.isFighter && !creep.getActiveBodyparts(HEAL)}): []
     let haveAllRallied = allFighters.every((creep:Creep) => creep.memory.hasRallied)
-    let hasSpawnedAllFighters = _spawnFighters(Game.spawns.Spawn1, rallyFlag, attackFlag, roomToAttack.creepInfo.hostile.fighterInfo)
+    let hasSpawnedAllFighters = _spawnFighters(Game.spawns.Spawn1, rallyFlag, attackFlag, roomToAttack.hostileCreeps)
     let hasRallied:boolean = (haveAllRallied && hasSpawnedAllFighters) || fightersInCombat.length > 0
 
     let rallyingFighters = allFighters.filter((creep: Creep) => creep.pos.roomName != attackFlag.pos.roomName)
-    let hostileOnPath:any = rallyingFighters.map((creep: Creep) => _(creep.room.memory.creepInfo.hostile.fighterInfo.creeps)).flatten().head()
+    let hostileOnPath:any = rallyingFighters.map((creep: Creep) => _(creep.room.memory.hostileCreeps.fighters)).flatten().head()
     if(hostileOnPath) {
         attackFlag.setPosition(hostileOnPath.pos)
     }
@@ -100,16 +100,15 @@ function _attack() {
     console.log('fightersInCombat:' + fightersInCombat.length, 'hasSpawnedAllFighters:' + hasSpawnedAllFighters, 'haveAllRallied:' + haveAllRallied)
 }
 
-function _shouldAttackRoom(roomIntel:RoomMemory) {
+function _shouldAttackRoom(roomIntel?:RoomMemory) {
     if(!roomIntel || !roomIntel.controllerInfo)
         return
 
     let isEnemyBase = roomIntel.controllerInfo.username && !roomIntel.controllerInfo.my
-    let fighterInfo = roomIntel.creepInfo.hostile.fighterInfo
-    return fighterInfo.creeps.length > 0 && !isEnemyBase
+    return roomIntel.hostileCreeps.fighters.length > 0 && !isEnemyBase
 }
 
-function _spawnFighters(spawn:StructureSpawn, rallyFlag:Flag, attackFlag:Flag, hostileFighterInfo:any) {
+function _spawnFighters(spawn:StructureSpawn, rallyFlag:Flag, attackFlag:Flag, hostileFighterInfo: HostileCreepMemory) {
     let myFighterInfo = Memory.creepInfo.fighterInfo
     if(myFighterInfo.attackParts < hostileFighterInfo.attackParts)
     {

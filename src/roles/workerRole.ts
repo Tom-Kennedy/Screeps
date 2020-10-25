@@ -6,7 +6,7 @@ import buildTask from '../tasks/tasks/buildTask'
 import upgradeTask from '../tasks/tasks/upgradeTask'
 import repairTask from '../tasks/tasks/repairTask'
 import maintainDefensesTask from '../tasks/tasks/maintainDefensesTask'
-import bodyBuilder from "../old/builder.body"
+import bodyBuilder from "../utils/bodyBuilder"
 
 const taskList = [
     supplyTask,

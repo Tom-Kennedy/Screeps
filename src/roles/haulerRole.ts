@@ -3,7 +3,7 @@ import retrieveTask from '../tasks/tasks/retrieveTask'
 import taskSupply from '../tasks/tasks/supplyTask'
 import taskLoadBalance from '../tasks/tasks/loadBalanceTask'
 import taskRunner from '../tasks/taskRunner'
-import bodyBuilder from "../old/builder.body"
+import bodyBuilder from "../utils/bodyBuilder"
 
 let haulerRole = {
     id: 'hauler',

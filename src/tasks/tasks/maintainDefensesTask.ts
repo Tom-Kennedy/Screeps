@@ -27,6 +27,8 @@ function _do(creep: Creep) {
         target = target || _.head(constructionTargets.filter((site) => site.structureType == STRUCTURE_WALL))
         target = target || getWeakestWall(repairTargets)
 
+        console.log('maintainDefense', creep, target)
+
         if(!target) {
             return false
         }
@@ -40,7 +42,7 @@ function _do(creep: Creep) {
     console.log(creep, 'build', buildResult)
     if(buildResult == ERR_NOT_IN_RANGE || repairResult == ERR_NOT_IN_RANGE) {
         const moveResult = creep.moveTo(target, { visualizePathStyle: { stroke: "#ffffff" }});
-        return moveResult == OK || moveResult != ERR_TIRED
+        return moveResult == OK || moveResult == ERR_TIRED
     }
 
     return repairResult == OK || buildResult == OK

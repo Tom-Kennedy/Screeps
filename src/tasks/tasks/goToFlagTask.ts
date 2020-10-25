@@ -1,4 +1,4 @@
-import creepHelper from 'old/helper.creep'
+import creepHelper from 'utils/creepHelper'
 
 let goToFlagTask = {
     createTask : function(flag?:Flag, condition?:any) {

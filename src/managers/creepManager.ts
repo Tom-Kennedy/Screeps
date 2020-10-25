@@ -10,7 +10,7 @@ import roleLongHauler from 'roles/longHaulerRole'
 import roleScout from 'roles/scoutRole'
 import roleHauler from 'roles/haulerRole'
 import roleBaseBuster from 'roles/baseBusterRole'
-import creepHelper from 'old/helper.creep'
+import creepHelper from 'utils/creepHelper'
 import intelManager from './intelManager'
 import _ from "lodash";
 

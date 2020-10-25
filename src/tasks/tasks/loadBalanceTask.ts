@@ -1,4 +1,4 @@
-import creepHelper from 'old/helper.creep'
+import creepHelper from 'utils/creepHelper'
 
 let loadBalanceTask = {
     id: 'loadBalance',
@@ -35,6 +35,5 @@ function findStoreTarget(creep: Creep) {
         return null
     }
 
-    // console.log(allStorage)
     return allStorage.reduce((a, b) => a.store.getUsedCapacity(RESOURCE_ENERGY) < b.store.getUsedCapacity(RESOURCE_ENERGY) ? a : b)
 }

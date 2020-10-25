@@ -13,7 +13,6 @@ function _maintainArea(creep: Creep) {
     return _cleanArea(creep)
 }
 
-/** @param {Creep} creep **/
 function _cleanArea(creep: Creep) {
     if(!creep.store.getFreeCapacity())
         return
