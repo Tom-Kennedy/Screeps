@@ -97,11 +97,7 @@ function _recordSources(room: Room) {
     room.memory.sources = room.find(FIND_SOURCES).map((source) => {
         return {
             pos: source.pos,
-            energy: source.energy,
-            energyCapacity: source.energyCapacity,
-            id: source.id,
-            ticksToRegeneration: source.ticksToRegeneration,
-            energyPerTick: source.energyCapacity / 300
+            id: source.id
         }
     })
 }

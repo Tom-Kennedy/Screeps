@@ -27,8 +27,6 @@ function _do(creep: Creep) {
         target = target || _.head(constructionTargets.filter((site) => site.structureType == STRUCTURE_WALL))
         target = target || getWeakestWall(repairTargets)
 
-        // console.log(creep, target)
-
         if(!target) {
             return false
         }
@@ -38,8 +36,8 @@ function _do(creep: Creep) {
     const repairResult = creep.repair(target);
     const buildResult = creep.build(target);
 
-    // console.log(creep, 'repair', repairResult)
-    // console.log(creep, 'build', buildResult)
+    console.log(creep, 'repair', repairResult)
+    console.log(creep, 'build', buildResult)
     if(buildResult == ERR_NOT_IN_RANGE || repairResult == ERR_NOT_IN_RANGE) {
         const moveResult = creep.moveTo(target, { visualizePathStyle: { stroke: "#ffffff" }});
         return moveResult == OK || moveResult != ERR_TIRED
@@ -70,7 +68,7 @@ function getRepairTargets(creep: Creep) {
             FIND_STRUCTURES,
             { filter: (structure) =>
                 ((structure.structureType == STRUCTURE_TOWER && structure.hits < structure.hitsMax) ||
-                (structure.structureType == STRUCTURE_RAMPART && structure.hits < Math.min(wallMaxHits, structure.hitsMax) * .9) ||
-                (structure.structureType == STRUCTURE_WALL && structure.hits < Math.min(wallMaxHits, structure.hitsMax) * .9))
+                (structure.structureType == STRUCTURE_RAMPART && structure.hits < Math.min(wallMaxHits, structure.hitsMax)) ||
+                (structure.structureType == STRUCTURE_WALL && structure.hits < Math.min(wallMaxHits, structure.hitsMax)))
             })
 }

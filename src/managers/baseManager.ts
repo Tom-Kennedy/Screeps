@@ -3,6 +3,7 @@ import towerManager from './towerManager'
 import workerRole from "roles/workerRole"
 import upgraderRole from "roles/upgraderRole"
 import haulerRole from 'roles/haulerRole'
+import minerRole from "../roles/minerRole"
 
 const baseManager = {
     manage: _manage,
@@ -20,12 +21,16 @@ function spawn(room:Room) {
         spawnManager.spawnWorker(room, haulerRole.id)
     }
 
-    if(_findCreepsOfRole(room, workerRole.id).length < room.find(FIND_SOURCES).length) {
+    if(_findCreepsOfRole(room, workerRole.id).length < 1) {
         spawnManager.spawnWorker(room, workerRole.id)
     }
 
     if(_findCreepsOfRole(room, upgraderRole.id).length < 1) {
         spawnManager.spawnWorker(room, upgraderRole.id)
+    }
+
+    if(_findCreepsOfRole(room, minerRole.id).length < room.find(FIND_SOURCES).length) {
+        spawnManager.spawnWorker(room, minerRole.id)
     }
 }
 

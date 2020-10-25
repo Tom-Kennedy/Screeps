@@ -1,5 +1,6 @@
 import workerRole from "../roles/workerRole"
 import haulerRole from "../roles/haulerRole"
+import upgraderRole from "../roles/upgraderRole"
 
 function _spawnWorker(room: Room, role: string) {
     const spawn = _(room.find(FIND_MY_SPAWNS)).head()
@@ -17,6 +18,9 @@ function _spawnWorker(room: Room, role: string) {
 function _getBodyForRole(role:string, capacity:number) {
     if(role == haulerRole.id) {
         return haulerRole.generateBody(capacity)
+    }
+    if(role == upgraderRole.id) {
+        return upgraderRole.generateBody(capacity)
     }
     return workerRole.generateBody(capacity)
 }

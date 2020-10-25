@@ -7,10 +7,7 @@ import upgradeTask from '../tasks/tasks/upgradeTask'
 
 const taskPriority = [
     storeTask,
-    mineTask,
-    taskSupply,
-    taskBuild,
-    upgradeTask
+    mineTask
 ];
 
 let minerRole = {
