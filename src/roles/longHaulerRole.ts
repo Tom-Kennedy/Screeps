@@ -1,7 +1,7 @@
-import taskGoTo from "../tasks/task.goToFlag"
-import taskRetrieve from '../tasks/task.retrieveExcess'
-import taskStore from '../tasks/task.store'
-import tasksRunner from '../tasks/tasks.runner'
+import taskGoTo from "../tasks/tasks/goToFlagTask"
+import taskRetrieve from '../tasks/tasks/retrieveExcessTask'
+import storeTask from '../tasks/tasks/storeTask'
+import taskRunner from '../tasks/taskRunner'
 
 let longHaulerRole = {
     id: 'longHauler',
@@ -11,10 +11,10 @@ let longHaulerRole = {
             taskGoTo.createTask(Game.flags[creep.memory.goToRetrieveFlagName], (c) => c.store.getUsedCapacity() < c.store.getCapacity() * .75),
             // @ts-ignore
             taskGoTo.createTask(Game.flags[creep.memory.goToDepositFlagName], (c) => c.store.getUsedCapacity() > c.store.getCapacity() * .75),
-            taskStore,
+            storeTask,
             taskRetrieve
         ];
-        return tasksRunner.run(creep, tasks)
+        return taskRunner.run(creep, tasks)
     }
 };
 

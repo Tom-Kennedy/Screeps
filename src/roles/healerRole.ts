@@ -1,15 +1,15 @@
-import tasksRunner from '../tasks/tasks.runner'
-import taskHeal from '../tasks/task.heal'
-import taskAssaultRoom from '../tasks/task.assaultRoom'
+import taskRunner from '../tasks/taskRunner'
+import healTask from '../tasks/tasks/healTask'
+import assaultRoomTask from '../tasks/tasks/assaultRoomTask'
 
 let healerRole = {
     id: 'healer',
     run: function(creep: Creep) {
         const taskPriority = [
-            taskHeal,
-            taskAssaultRoom
+            healTask,
+            assaultRoomTask
         ];
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 }
 

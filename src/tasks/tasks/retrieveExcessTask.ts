@@ -1,5 +1,5 @@
 let _id = 'retrieveExcess'
-const taskRetrieveExcess = {
+const retrieveExcessTask = {
     id: _id,
     do: function(creep: Creep) {
         if(creep.store.getFreeCapacity() == 0)
@@ -20,7 +20,7 @@ const taskRetrieveExcess = {
     }
 }
 
-export default taskRetrieveExcess
+export default retrieveExcessTask
 
 function findContainer(creep: Creep) {
     const allStorage = creep.room.find<StructureContainer>(FIND_STRUCTURES, {

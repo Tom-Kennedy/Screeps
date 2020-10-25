@@ -1,6 +1,6 @@
 import creepHelper from 'old/helper.creep'
 
-let taskUpgrade = {
+let upgradeTask = {
     id: 'upgrade',
     do : function(creep: Creep) {
         if(creep.store.getUsedCapacity() == 0 || !creep.room.controller)
@@ -18,4 +18,4 @@ let taskUpgrade = {
     }
 }
 
-export default taskUpgrade
+export default upgradeTask

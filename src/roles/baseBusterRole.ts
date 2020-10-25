@@ -1,6 +1,6 @@
-import taskGoToFlag from '../tasks/task.goToFlag'
-import tasksRunner from '../tasks/tasks.runner'
-import attackHostileStructures from '../tasks/task.attackHostileStructures'
+import goToFlagTask from '../tasks/tasks/goToFlagTask'
+import taskRunner from '../tasks/taskRunner'
+import attackHostileStructures from '../tasks/tasks/attackHostileStructuresStructures'
 
 let baseBusterRole = {
     id: 'scout',
@@ -8,10 +8,10 @@ let baseBusterRole = {
         const taskPriority = [
             attackHostileStructures,
             // @ts-ignore
-            taskGoToFlag.createTask(Game.flags[creep.memory.scoutFlag], () => !creep.room.find(FIND_HOSTILE_CREEPS).length)
+            goToFlagTask.createTask(Game.flags[creep.memory.scoutFlag], () => !creep.room.find(FIND_HOSTILE_CREEPS).length)
         ]
 
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 }
 

@@ -1,19 +1,19 @@
-import taskMine from '../tasks/task.mine'
-import taskRetrieve from '../tasks/task.retrieve'
-import taskUpgrade from '../tasks/task.upgrade'
-import tasksRunner from '../tasks/tasks.runner'
+import mineTask from '../tasks/tasks/mineTask'
+import retrieveTask from '../tasks/tasks/retrieveTask'
+import upgradeTask from '../tasks/tasks/upgradeTask'
+import taskRunner from '../tasks/taskRunner'
 
 let upgraderRole = {
     id: 'upgrader',
     run: function(creep: Creep) {
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 }
 
 export default upgraderRole
 
 const taskPriority = [
-    taskRetrieve,
-    taskUpgrade,
-    taskMine
+    retrieveTask,
+    upgradeTask,
+    mineTask
 ]

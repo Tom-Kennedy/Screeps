@@ -1,22 +1,22 @@
-import taskMine from '../tasks/task.mine'
-import taskStore from '../tasks/task.store'
-import tasksRunner from '../tasks/tasks.runner'
-import taskSupply from '../tasks/task.supply'
-import taskBuild from '../tasks/task.build'
-import taskUpgrade from '../tasks/task.upgrade'
+import mineTask from '../tasks/tasks/mineTask'
+import storeTask from '../tasks/tasks/storeTask'
+import taskRunner from '../tasks/taskRunner'
+import taskSupply from '../tasks/tasks/supplyTask'
+import taskBuild from '../tasks/tasks/buildTask'
+import upgradeTask from '../tasks/tasks/upgradeTask'
 
 const taskPriority = [
-    taskStore,
-    taskMine,
+    storeTask,
+    mineTask,
     taskSupply,
     taskBuild,
-    taskUpgrade
+    upgradeTask
 ];
 
 let minerRole = {
     id: 'miner',
     run: function(creep: Creep) {
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 }
 

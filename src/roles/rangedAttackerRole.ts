@@ -1,15 +1,15 @@
-import taskAssaultRoom from '../tasks/task.assaultRoom'
-import tasksRunner from '../tasks/tasks.runner'
-import taskRangedAttack from '../tasks/task.attackRanged'
+import assaultRoomTask from '../tasks/tasks/assaultRoomTask'
+import taskRunner from '../tasks/taskRunner'
+import taskRangedAttack from '../tasks/tasks/attackRangedTask'
 
 let rangedAttackerRole = {
     id: 'rangedAttacker',
     run: function(creep: Creep) {
         const taskPriority = [
             taskRangedAttack,
-            taskAssaultRoom
+            assaultRoomTask
         ];
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 };
 

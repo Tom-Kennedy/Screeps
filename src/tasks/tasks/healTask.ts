@@ -1,4 +1,4 @@
-let taskHeal = {
+let healTask = {
     id: 'heal',
     do: function(creep: Creep) {
         let closestDamagedCreep = creep.hits < creep.hitsMax ? creep : creep.pos.findClosestByPath(FIND_MY_CREEPS, {filter : (c) => c.hits < c.hitsMax})
@@ -26,7 +26,7 @@ let taskHeal = {
     }
 }
 
-export default taskHeal
+export default healTask
 
 function moveAway(creep:Creep, direction:DirectionConstant) {
     let idealDirection = (direction + 4) % 8

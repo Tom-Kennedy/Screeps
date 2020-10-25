@@ -1,6 +1,6 @@
-import tasksRunner from '../tasks/tasks.runner'
-import taskAttack from '../tasks/task.attack'
-import taskAssaultRoom from '../tasks/task.assaultRoom'
+import taskRunner from '../tasks/taskRunner'
+import taskAttack from '../tasks/tasks/attackTask'
+import assaultRoomTask from '../tasks/tasks/assaultRoomTask'
 
 let attackerRole = {
     id: 'attacker',
@@ -12,7 +12,7 @@ export default attackerRole
 function _run(creep: Creep) {
     const taskPriority = [
         taskAttack,
-        taskAssaultRoom
+        assaultRoomTask
     ]
-    return tasksRunner.run(creep, taskPriority)
+    return taskRunner.run(creep, taskPriority)
 }

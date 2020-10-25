@@ -1,4 +1,4 @@
-let taskAssaultRoom = {
+let assaultRoomTask = {
     id: 'assaultRoom',
     do: function(creep: Creep) {
         const rallyFlag = creep.memory.rallyFlagName ? Game.flags[creep.memory.rallyFlagName] : undefined;
@@ -23,4 +23,4 @@ let taskAssaultRoom = {
     }
 }
 
-export default taskAssaultRoom
+export default assaultRoomTask

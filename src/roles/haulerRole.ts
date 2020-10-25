@@ -1,8 +1,8 @@
-import taskRetrieveExcess from '../tasks/task.retrieveExcess'
-import taskRetrieve from '../tasks/task.retrieve'
-import taskSupply from '../tasks/task.supply'
-import taskLoadBalance from '../tasks/task.loadBalance'
-import tasksRunner from '../tasks/tasks.runner'
+import retrieveExcessTask from '../tasks/tasks/retrieveExcessTask'
+import retrieveTask from '../tasks/tasks/retrieveTask'
+import taskSupply from '../tasks/tasks/supplyTask'
+import taskLoadBalance from '../tasks/tasks/loadBalanceTask'
+import taskRunner from '../tasks/taskRunner'
 
 let haulerRole = {
     id: 'hauler',
@@ -15,9 +15,9 @@ function _run(creep : Creep) {
     const tasks = [
         taskSupply,
         taskLoadBalance,
-        taskRetrieveExcess,
-        taskRetrieve
+        retrieveExcessTask,
+        retrieveTask
     ]
 
-    tasksRunner.run(creep, tasks)
+    taskRunner.run(creep, tasks)
 }

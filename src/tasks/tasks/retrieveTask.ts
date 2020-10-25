@@ -1,5 +1,5 @@
 let _id = 'retrieve'
-let taskRetrieve = {
+let retrieveTask = {
     id: _id,
     do: function(creep:Creep) {
         if(creep.store.getFreeCapacity() == 0)
@@ -18,7 +18,7 @@ let taskRetrieve = {
     }
 }
 
-export default taskRetrieve
+export default retrieveTask
 
 function findContainer(creep:Creep) {
     return creep.pos.findClosestByPath(FIND_STRUCTURES, {

@@ -1,7 +1,7 @@
 import creepHelper from 'old/helper.creep'
 import _ from 'lodash'
 
-let taskMine = {
+let mineTask = {
     id: 'mine',
     do : function(creep: Creep) {
         if(creep.store.getFreeCapacity() == 0)
@@ -40,4 +40,4 @@ let taskMine = {
     }
 }
 
-export default taskMine
+export default mineTask

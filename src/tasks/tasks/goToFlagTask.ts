@@ -1,6 +1,6 @@
 import creepHelper from 'old/helper.creep'
 
-let taskGoToFlag = {
+let goToFlagTask = {
     createTask : function(flag?:Flag, condition?:any) {
         if(!flag) {
             return {
@@ -35,4 +35,4 @@ let taskGoToFlag = {
     }
 }
 
-export default taskGoToFlag
+export default goToFlagTask

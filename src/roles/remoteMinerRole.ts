@@ -1,7 +1,7 @@
-import taskGoTo from '../tasks/task.goToFlag'
-import taskMine from '../tasks/task.mine'
-import taskStore from '../tasks/task.store'
-import tasksRunner from '../tasks/tasks.runner'
+import taskGoTo from '../tasks/tasks/goToFlagTask'
+import mineTask from '../tasks/tasks/mineTask'
+import storeTask from '../tasks/tasks/storeTask'
+import taskRunner from '../tasks/taskRunner'
 
 let remoteMinerRole = {
     id: 'remoteMiner',
@@ -9,13 +9,13 @@ let remoteMinerRole = {
         const retrieveFlag = creep.memory.goToRetrieveFlagName ? Game.flags[creep.memory.goToRetrieveFlagName] : undefined
         const storeFlag = Game.flags.Container;
         const taskPriority = [
-            taskStore,
+            storeTask,
             taskGoTo.createTask(storeFlag, _shouldReturn()),
             taskGoTo.createTask(retrieveFlag, _shouldRetrieve(retrieveFlag)),
-            taskMine
+            mineTask
         ]
 
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 };
 

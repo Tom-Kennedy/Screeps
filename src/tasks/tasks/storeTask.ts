@@ -1,6 +1,6 @@
 import creepHelper from 'old/helper.creep'
 
-let taskStore = {
+let storeTask = {
     id: 'store',
     do: function(creep: Creep) {
         if(creep.store.getUsedCapacity() == 0)
@@ -17,7 +17,7 @@ let taskStore = {
     }
 }
 
-export default taskStore
+export default storeTask
 
 function findStoreTarget(creep:Creep) {
     return creep.pos.findClosestByPath(FIND_STRUCTURES, {

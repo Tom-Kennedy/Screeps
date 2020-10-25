@@ -1,8 +1,8 @@
-let tasksRunner = {
+let taskRunner = {
     run: _run
 };
 
-export default tasksRunner
+export default taskRunner
 
 function _run(creep:Creep, tasks:any[]): boolean {
     // TODO: should try to do previous task here first

@@ -1,5 +1,5 @@
-import taskClaim from '../tasks/task.claim'
-import tasksRunner from '../tasks/tasks.runner'
+import taskClaim from '../tasks/tasks/claimTask'
+import taskRunner from '../tasks/taskRunner'
 
 const taskPriority = [
     taskClaim
@@ -8,7 +8,7 @@ const taskPriority = [
 let claimerRole = {
     id: 'claimer',
     run: function(creep: Creep) {
-        return tasksRunner.run(creep, taskPriority)
+        return taskRunner.run(creep, taskPriority)
     }
 }
 

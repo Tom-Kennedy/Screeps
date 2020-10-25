@@ -1,26 +1,26 @@
-import tasksRunner from '../tasks/tasks.runner'
-import taskRetrieve from '../tasks/task.retrieve'
-import taskMine  from '../tasks/task.mine'
-import taskSupply from '../tasks/task.supply'
-import taskBuild from '../tasks/task.build'
-import taskUpgrade from '../tasks/task.upgrade'
-import taskRepair from '../tasks/task.repair'
-import maintainDefences from '../tasks/task.maintainDefences'
+import taskRunner from '../tasks/taskRunner'
+import retrieveTask from '../tasks/tasks/retrieveTask'
+import mineTask  from '../tasks/tasks/mineTask'
+import taskSupply from '../tasks/tasks/supplyTask'
+import taskBuild from '../tasks/tasks/buildTask'
+import upgradeTask from '../tasks/tasks/upgradeTask'
+import taskRepair from '../tasks/tasks/repairTask'
+import maintainDefences from '../tasks/tasks/maintainDefencesTask'
 
 const taskList = [
     taskSupply,
     taskBuild,
     taskRepair,
     maintainDefences,
-    taskUpgrade,
-    taskRetrieve,
-    taskMine
+    upgradeTask,
+    retrieveTask,
+    mineTask
 ]
 
 let workerRole = {
     id: 'worker',
     run: function (creep: Creep) {
-        return tasksRunner.run(creep, taskList)
+        return taskRunner.run(creep, taskList)
     }
 }
 
