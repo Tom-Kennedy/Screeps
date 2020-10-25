@@ -17,7 +17,9 @@ function _run() {
 }
 
 function _harass() {
-    let roomMemory = Memory.rooms[Game.flags.Scout.pos.roomName]
+    const flag = Game.flags.Scout
+
+    let roomMemory = flag ? Memory.rooms[flag.pos.roomName] : undefined
     if(!roomMemory)
         return
 
@@ -99,7 +101,7 @@ function _attack() {
 }
 
 function _shouldAttackRoom(roomIntel:RoomMemory) {
-    if(!roomIntel.controllerInfo)
+    if(!roomIntel || !roomIntel.controllerInfo)
         return
 
     let isEnemyBase = roomIntel.controllerInfo.username && !roomIntel.controllerInfo.my

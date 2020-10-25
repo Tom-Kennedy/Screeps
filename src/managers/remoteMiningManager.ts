@@ -2,7 +2,8 @@ import bodyBuilder from 'old/builder.body'
 
 let remoteMiningManager = {
     run: function() {
-        if(Memory.rooms['E46S8'].creepInfo.hostile.fighterInfo.creeps.length) {
+        const transitRoomMemory = Memory.rooms['E46S8']
+        if(transitRoomMemory && transitRoomMemory.creepInfo.hostile.fighterInfo.creeps.length) {
             return
         }
 
