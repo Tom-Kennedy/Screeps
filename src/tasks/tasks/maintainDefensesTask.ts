@@ -1,11 +1,11 @@
 import _ from 'lodash'
 
-let maintainDefencesTask = {
+let maintainDefensesTask = {
     id: 'maintainDefences',
     do: _do
 }
 
-export default maintainDefencesTask
+export default maintainDefensesTask
 
 function _do(creep: Creep) {
     let target:any = creep.memory.targetId ? Game.getObjectById(creep.memory.targetId) : undefined

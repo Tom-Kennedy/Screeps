@@ -1,17 +1,17 @@
 import taskRunner from '../tasks/taskRunner'
 import retrieveTask from '../tasks/tasks/retrieveTask'
 import mineTask  from '../tasks/tasks/mineTask'
-import taskSupply from '../tasks/tasks/supplyTask'
-import taskBuild from '../tasks/tasks/buildTask'
+import supplyTask from '../tasks/tasks/supplyTask'
+import buildTask from '../tasks/tasks/buildTask'
 import upgradeTask from '../tasks/tasks/upgradeTask'
-import taskRepair from '../tasks/tasks/repairTask'
-import maintainDefences from '../tasks/tasks/maintainDefencesTask'
+import repairTask from '../tasks/tasks/repairTask'
+import maintainDefensesTask from '../tasks/tasks/maintainDefensesTask'
 
 const taskList = [
-    taskSupply,
-    taskBuild,
-    taskRepair,
-    maintainDefences,
+    supplyTask,
+    buildTask,
+    repairTask,
+    maintainDefensesTask,
     upgradeTask,
     retrieveTask,
     mineTask
