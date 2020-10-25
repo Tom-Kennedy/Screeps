@@ -1,5 +1,5 @@
-import taskClaim from './task.claim'
-import tasksRunner from './tasks.runner'
+import taskClaim from '../tasks/task.claim'
+import tasksRunner from '../tasks/tasks.runner'
 
 const taskPriority = [
     taskClaim

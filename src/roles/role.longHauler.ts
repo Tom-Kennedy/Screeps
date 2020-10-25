@@ -1,7 +1,7 @@
-import taskGoTo from "./task.goToFlag"
-import taskRetrieve from './task.retrieveExcess'
-import taskStore from './task.store'
-import tasksRunner from './tasks.runner'
+import taskGoTo from "../tasks/task.goToFlag"
+import taskRetrieve from '../tasks/task.retrieveExcess'
+import taskStore from '../tasks/task.store'
+import tasksRunner from '../tasks/tasks.runner'
 
 let longHaulerRole = {
     id: 'longHauler',

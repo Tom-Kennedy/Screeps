@@ -1,6 +1,6 @@
-import tasksRunner from './tasks.runner'
-import taskAttack from './task.attack'
-import taskAssaultRoom from './task.assaultRoom'
+import tasksRunner from '../tasks/tasks.runner'
+import taskAttack from '../tasks/task.attack'
+import taskAssaultRoom from '../tasks/task.assaultRoom'
 
 let roleAttacker = {
     id: 'attacker',

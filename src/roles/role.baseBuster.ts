@@ -1,6 +1,6 @@
-import taskGoToFlag from './task.goToFlag'
-import tasksRunner from './tasks.runner'
-import attackHostileStructures from './task.attackHostileStructures'
+import taskGoToFlag from '../tasks/task.goToFlag'
+import tasksRunner from '../tasks/tasks.runner'
+import attackHostileStructures from '../tasks/task.attackHostileStructures'
 
 let baseBusterRole = {
     id: 'scout',

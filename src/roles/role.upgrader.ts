@@ -1,7 +1,7 @@
-import taskMine from './task.mine'
-import taskRetrieve from './task.retrieve'
-import taskUpgrade from './task.upgrade'
-import tasksRunner from './tasks.runner'
+import taskMine from '../tasks/task.mine'
+import taskRetrieve from '../tasks/task.retrieve'
+import taskUpgrade from '../tasks/task.upgrade'
+import tasksRunner from '../tasks/tasks.runner'
 
 let roleUpgrader = {
     id: 'upgrader',
